@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>プログレスバー</title>
+<style>
+    .progress-container {
+        width: 100%;
+        height: 30px;
+        background-color: #eee;
+    }
+    .progress-bar {
+        height: 30px;
+        background-color: #4CAF50;
+        width: 0%;
+        text-align: center;
+        color: white;
+        line-height: 30px;
+    }
+</style>
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar">0%</div>
+    </div>
+    <input type="number" id="numberInput" placeholder="数値を入力">
+    <button onclick="increaseProgress()">増加</button>
+
+    <script>
+        function increaseProgress() {
+            var input = document.getElementById("numberInput").value;
+            var currentWidth = parseFloat(document.getElementById("progressBar").style.width);
+            var newWidth = currentWidth + 1.4 * input;
+            if (newWidth > 100) newWidth = 100;  // 最大値を100%に制限
+            document.getElementById("progressBar").style.width = newWidth + '%';
+            document.getElementById("progressBar").innerText = newWidth.toFixed(1) + '%';
+        }
+    </script>
+</body>
+</html>
